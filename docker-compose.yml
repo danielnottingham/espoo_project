@@ -1,0 +1,41 @@
+version: "3"
+services:
+  espoo_postgres_db:
+    image: postgres
+    container_name: espoo_postgres_db
+    volumes:
+      - espoo_postgres_db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_HOST_AUTH_METHOD: 'trust'
+    ports:
+      - '5444:5432'
+
+  espoo_rails_server:
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    container_name: espoo_rails_server
+    volumes:
+      - ./:/app
+    depends_on:
+      - espoo_postgres_db
+    environment:
+      DATABASE_USERNAME: 'postgres'
+      DATABASE_PASSWORD: 'postgres'
+      DATABASE_HOST: 'espoo_postgres_db'
+      DATABASE_PORT: '5432'
+      DATABASE_NAME: 'espoo_db'
+    tty: true
+    command: rails s -b 0
+    ports:
+      - "3000:3000"
+
+volumes:
+  espoo_postgres_db_volume:
+# docker-compose build
+# docker-compose up -d
+# docker-compose exec espoo_rails_server rake db:create db:migrate db:seed
+# docker-compose exec espoo_rails_server rspec
+# docker build -f Dockerfile_rails . -t edimossilva/espoo_rails_server
+# docker push edimossilva/espoo_rails_server
