@@ -11,8 +11,16 @@ blocks:
       env_vars:
         - name: DATABASE_URL
           value: "postgresql://postgres:@0.0.0.0:5432/myapp_test"
-        - name: RAILS_ENV
-          value: test
+        - name: DATABASE_USERNAME
+          value: postgres
+        - name: DATABASE_PASSWORD
+          value: postgres
+        - name: DATABASE_HOST
+          value: "localhost"
+        - name: DATABASE_PORT
+          value: "5432"
+        - name: DATABASE_NAME
+          value: espoo_db
       jobs:
       - name: Test
         commands:
