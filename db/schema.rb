@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2021_01_13_131639) do
   create_table "champions", force: :cascade do |t|
     t.string "name"
     t.string "title"
-    t.string "tags"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
