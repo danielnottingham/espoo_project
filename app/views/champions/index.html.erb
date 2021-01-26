@@ -1,2 +1,17 @@
-<h1>CHAMPIONS  </h1>
-<%= @champions %>
+<h2>CHAMPIONS LIST</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @champions.each do |champ| %>
+            <tr>
+                <td><%= champ.name %></td>
+                <td><%= champ.title %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

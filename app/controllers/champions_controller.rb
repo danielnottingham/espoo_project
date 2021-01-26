@@ -1,5 +1,5 @@
 class ChampionsController < ApplicationController
   def index
-    @champions = LolApi.new.champions
+    @champions = Champion.all
   end
 end

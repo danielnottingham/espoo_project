@@ -1,3 +1,3 @@
 class Champion < ApplicationRecord
-  validates :name, :title, :image, presence: true
+  validates :name, :title, presence: true
 end
