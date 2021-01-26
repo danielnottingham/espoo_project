@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/getallchampionsfromapi', action: 'index', controller: 'getallchampionsfromapi'
   get '/champions', action: 'index', controller: 'champions'
   devise_for :admin_users
   root 'home#index'
